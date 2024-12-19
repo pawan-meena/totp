@@ -11,7 +11,7 @@ $otp->setLabel('PAWAN_APP');
 $otpSecrets = file_exists('otp-secrets.json') ? json_decode(file_get_contents('otp-secrets.json'), true) : [];
 
 
-$userId = $_GET['user_id'];
+$userId = intval($_GET['user_id']); 
 $existingIndex = null;
 
 foreach ($otpSecrets as $index => $entry) {
