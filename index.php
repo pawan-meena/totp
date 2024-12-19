@@ -10,10 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include('generate-otp.php');
         } elseif ($action == 'valotp' && isset($_GET['user_id']) && isset($_GET['otp'])) {
             include('validate-otp.php');
-        } else {
+        } 
+        else {
             echo json_encode(['error' => 'Invalid action or missing parameters']);
         }
-    } else {
+    } elseif ($_GET['action'] == 'showotp' && isset($_GET['secret'])) {
+        include('check-current-otp.php');
+    }
+    
+    else {
         echo json_encode(['error' => 'No action specified']);
     }
 }
